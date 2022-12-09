@@ -120,3 +120,7 @@ input {
   border-radius: 5px;
   display: inline;
 }
+#reference {
+  color: #005792;
+  font-size: 10px;
+}
