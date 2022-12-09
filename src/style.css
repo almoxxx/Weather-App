@@ -1,0 +1,122 @@
+body {
+  background-image: url(images/cloud.jpg);
+}
+.container {
+  display: block;
+  margin: 0 auto;
+}
+.body {
+  border-style: solid;
+  border-color: #347474;
+  border-radius: 5px;
+  border-width: 10px;
+  padding: 30px;
+  margin: 30px;
+  background: linear-gradient(
+    109.6deg,
+    rgb(251, 250, 225) 11.2%,
+    rgb(206, 240, 185) 47.5%,
+    rgb(100, 163, 111) 100.2%
+  );
+  text-align: center;
+  font-family: yanone kaffeesatz;
+}
+h1 {
+  color: #ff7e67;
+}
+h2 {
+  color: #005792;
+  font-size: 15px;
+  font-weight: 200;
+}
+.location {
+  color: #005792;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 15px;
+}
+
+.current-weather {
+  color: #005792;
+  font-size: 23px;
+  padding: 10px 15px;
+  margin: 10px 15px;
+}
+#current-location {
+  font-size: 28px;
+  color: #ff7e67;
+  font-weight: bold;
+  padding: 10px 15px;
+}
+#current-temperature {
+  font-size: 28px;
+  color: #ff7e67;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-style: solid;
+  border-color: #ff7e67;
+  border-radius: 10px;
+}
+#description {
+  font-size: 24px;
+  color: #347474;
+  font-weight: 500;
+  text-decoration: underline;
+}
+#humidity {
+  padding: 10px 15px;
+}
+#current-humidity {
+  font-size: 28px;
+  color: #ff7e67;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-style: solid;
+  border-color: #ff7e67;
+  border-radius: 10px;
+}
+.forecast {
+  border-color: #347474;
+  border-radius: 10px;
+  border-width: 3px;
+  border-style: dotted;
+  padding: 30px;
+  margin: 10px;
+  font-size: 20px;
+  color: #ff7e67;
+}
+i {
+  font-size: 30px;
+  color: #347474;
+  margin: 10px 15px;
+}
+input {
+  background-color: #aac29b;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  color: #f03412;
+  padding: 10px 15px;
+}
+
+#button {
+  background-color: #ff7e67;
+  border-color: #347474;
+  border-style: solid;
+  color: #005792;
+  padding: 10px 15px;
+}
+#Fahrenheit {
+  color: #005792;
+  font-size: 10px;
+}
+
+#button-current-location {
+  background-color: rgb(100, 163, 111);
+  border-color: #347474;
+  border-style: solid;
+  color: #ff7e67;
+  padding: 10px 10px;
+  border-radius: 5px;
+  display: inline;
+}
