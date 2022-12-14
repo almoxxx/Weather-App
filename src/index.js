@@ -61,6 +61,9 @@ function showWeather(response) {
   let currenthumidity = document.querySelector("#current-humidity");
   let humidity = response.data.temperature.humidity;
   currenthumidity.innerHTML = `   ${humidity} %`;
+  let descriptionicon = document.querySelector("#des-i");
+  descriptionicon.setAttribute("src", response.data.condition.icon_url);
+  descriptionicon.setAttribute("alt", response.data.condition.icon);
 }
 
 function handleCurrentLocation(e) {
