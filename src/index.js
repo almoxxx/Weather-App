@@ -23,9 +23,9 @@ let form = document.querySelector("form");
 form.addEventListener("submit", search);
 
 function searchCity(city) {
-  let apiKey = "8402ccd9e55983fce71eeeaa1d2bd1fc";
+  let apiKey = "b1d355353afe3oe89t1c624ba0cd84bf";
   let unit = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(showWeather);
 }
 
@@ -42,9 +42,9 @@ function showPosition(position) {
   console.log({ position });
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
-  let apiKey = "8402ccd9e55983fce71eeeaa1d2bd1fc";
+  let apiKey = "b1d355353afe3oe89t1c624ba0cd84bf";
   let unit = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?&lat=${lat}&lon=${long}&appid=${apiKey}&units=${unit}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${long}&lat=${lat}&key=${apiKey}&units=${unit}`;
 
   axios.get(apiUrl).then(showWeather);
 }
@@ -52,14 +52,14 @@ function showPosition(position) {
 function showWeather(response) {
   console.log({ response });
   let currentLocation = document.querySelector("#current-location");
-  currentLocation.innerHTML = response.data.name;
-  let temperature = Math.round(response.data.main.temp);
+  currentLocation.innerHTML = response.data.city;
+  let temperature = Math.round(response.data.temperature.current);
   let currenttemperature = document.querySelector("#current-temperature");
   currenttemperature.innerHTML = `${temperature}°C`;
   let description = document.querySelector("#description");
-  description.innerHTML = `${response.data.weather[0].description}`;
+  description.innerHTML = `${response.data.condition.description}`;
   let currenthumidity = document.querySelector("#current-humidity");
-  let humidity = response.data.main.humidity;
+  let humidity = response.data.temperature.humidity;
   currenthumidity.innerHTML = `   ${humidity} %`;
 }
 

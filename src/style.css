@@ -124,3 +124,6 @@ input {
   color: #005792;
   font-size: 10px;
 }
+#description {
+  text-transform: capitalize;
+}
