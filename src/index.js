@@ -68,6 +68,41 @@ function showWeather(response) {
   let windspeed = document.querySelector("#current-speed");
   let currentspeed = Math.round(response.data.wind.speed);
   windspeed.innerHTML = `${currentspeed}km/h`;
+  displayForecast();
+}
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let now = new Date();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
+
+  let forecastHTML = `<div class= "row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+      <div class="forecast-date">
+      <strong>${day}</strong> 
+      </div>
+      <img class="forecast-icon" src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png" alt="few clouds" width="40px"/>
+       <div class="forecast-temp">
+<span class="forecast-max-temp"> 10°/</span>
+<span class="forecast-min-temp">7°</span>
+       </div>
+  </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
 }
 
 function handleCurrentLocation(e) {
