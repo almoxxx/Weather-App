@@ -57,6 +57,19 @@ h2 {
   border-color: #ff7e67;
   border-radius: 10px;
 }
+#current-temp a {
+  font-size: 15px;
+  color: #ff7e67;
+  font-weight: bold;
+  cursor: default;
+}
+#current-temp .active {
+  cursor: default;
+  text-decoration: none;
+}
+#current-temp .active:hover {
+  text-decoration: none;
+}
 #description {
   font-size: 24px;
   color: #347474;
@@ -64,9 +77,18 @@ h2 {
   text-decoration: underline;
 }
 #humidity {
-  padding: 10px 15px;
+  padding: 5px;
 }
 #current-humidity {
+  font-size: 28px;
+  color: #ff7e67;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-style: solid;
+  border-color: #ff7e67;
+  border-radius: 10px;
+}
+#current-speed {
   font-size: 28px;
   color: #ff7e67;
   font-weight: bold;
@@ -85,10 +107,9 @@ h2 {
   font-size: 20px;
   color: #ff7e67;
 }
-i {
-  font-size: 30px;
-  color: #347474;
-  margin: 10px 15px;
+#des-i {
+  width: 70px;
+  height: 70px;
 }
 input {
   background-color: #aac29b;
