@@ -1,5 +1,5 @@
-function formatDate(timestamp) {
-  let now = new Date(timestamp);
+function formatDate(date = new Date()) {
+  let now = new Date(date);
   let currentDate = document.querySelector("#current-date");
 
   let days = [
@@ -13,7 +13,13 @@ function formatDate(timestamp) {
   ];
   let day = days[now.getDay()];
   let hours = now.getHours();
+  if (hours < 10) {
+    hours.innerHTML = `0${hours}`;
+  }
   let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes.innerHTML = `0${minutes}`;
+  }
   let city = document.querySelector("#city");
 
   currentDate.innerHTML = `Today, ${day} at ${hours}:${minutes} in ${city.value}`;
@@ -22,6 +28,13 @@ formatDate();
 let form = document.querySelector("form");
 form.addEventListener("submit", search);
 
+function formatDay(time) {
+  let date = new Date(time * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
 function searchCity(city) {
   let apiKey = "b1d355353afe3oe89t1c624ba0cd84bf";
   let unit = "metric";
@@ -50,7 +63,7 @@ function showPosition(position) {
 }
 
 function showWeather(response) {
-  console.log({ response });
+  console.log(response.data);
   let currentLocation = document.querySelector("#current-location");
   currentLocation.innerHTML = response.data.city;
   let temperature = Math.round(response.data.temperature.current);
@@ -68,25 +81,14 @@ function showWeather(response) {
   let windspeed = document.querySelector("#current-speed");
   let currentspeed = Math.round(response.data.wind.speed);
   windspeed.innerHTML = `${currentspeed}km/h`;
-  displayForecast(coordinates);
+  console.log(response.data);
+  getForecast(response.data.coordinates);
 }
 
 function displayForecast(response) {
   let forecast = response.data.daily;
 
   let forecastElement = document.querySelector("#forecast");
-  // let now = new Date();
-  //let days = [
-  // "Sunday",
-  // "Monday",
-  // "Tuesday",
-  // "Wednesday",
-  // "Thursday",
-  // "Friday",
-  // "Saturday",
-  //];
-
-  // let day = days[now.getDay()];
 
   let forecastHTML = `<div class= "row">`;
   forecast.forEach(function (forecastDay, index) {
@@ -96,9 +98,9 @@ function displayForecast(response) {
         `
       <div class="col-2">
       <div class="forecast-date">
-      <strong>${forecastDay.dt}</strong> 
+ <strong>${formatDay(forecastDay.time)}</strong> 
       </div>
-      <img class="forecast-icon" src="${forecastDay.icon_url}" alt="${
+      <img class="forecast-icon" src="${forecastDay.condition.icon_url}" alt="${
           forecastDay.icon
         }" width="40px"/>
        <div class="forecast-temp">
@@ -115,11 +117,14 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
+
 function getForecast(coordinates) {
-  console.log(coordinates);
-  let apikey = b1d355353afe3oe89t1c624ba0cd84bf;
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.lon}&lat=${coordinates.lat}&key=${apikey}&units={metric}`;
+  let apikey = "b1d355353afe3oe89t1c624ba0cd84bf";
+  let units = "metric";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&units=${units}&key=${apikey}`;
+
   axios.get(apiUrl).then(displayForecast);
+  console.log(apiUrl);
 }
 
 function handleCurrentLocation(e) {
